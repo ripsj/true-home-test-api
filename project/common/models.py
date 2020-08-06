@@ -7,11 +7,6 @@ from django.contrib.auth import get_user_model
 UserModel = get_user_model()
 
 class FieldDefaultsAbstracts(models.Model):
-    owner = models.ForeignKey(
-        UserModel,
-        on_delete=models.CASCADE,
-        related_name="%(app_label)s_%(class)s_owner"
-    )
     created_at = models.DateTimeField(
         _('Created at'),
         auto_now_add=True,
@@ -20,6 +15,11 @@ class FieldDefaultsAbstracts(models.Model):
     updated_at = models.DateTimeField(
         _('Updated at'),
         auto_now=True
+    )
+    disabled_at = models.DateTimeField(
+        _('Disabled at'),
+        auto_now=True,
+        null=True
     )
     is_active = models.BooleanField(
         verbose_name=_('Active'),

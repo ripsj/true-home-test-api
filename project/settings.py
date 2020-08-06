@@ -69,9 +69,9 @@ REST_FRAMEWORK = {
     'EXCEPTION_HANDLER': 'project.common.exception_handler.custom_exception_handler',
     'DEFAULT_PAGINATION_CLASS': 'project.common.pagination.PageNumberPagination',
     'PAGE_SIZE': getenvar('PAGE_SIZE'),
-    # 'DEFAULT_FILTER_BACKENDS': (
-    #     'django_filters.rest_framework.DjangoFilterBackend',
-    # ),
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ),
 }
 
 MIDDLEWARE = [

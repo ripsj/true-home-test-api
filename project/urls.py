@@ -13,7 +13,6 @@ urlpatterns = [
     url(r'^v1', include('project.apps.security.urls')),
     url(r'^v1/', include('project.apps.security.urls')),
     url(r'^v1/auth/', include('project.apps.security.urls')),
-    url(r'^v1/examples/', include('project.apps.examples.urls')),
 ]
 
 handler404 = secview.error_404_def
