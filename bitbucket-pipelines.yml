@@ -1,0 +1,27 @@
+image: python:3.6.1
+
+pipelines:
+  tags:
+    release-*:
+      - step:
+          caches:
+            - pip
+          script:
+            - chmod +x ci.sh
+            - ./ci.sh prod
+  branches:
+    master:
+      - step:
+          caches:
+            - pip
+          script:
+            - chmod +x ci.sh
+            - ./ci.sh stage
+
+    develop:
+      - step:
+          caches:
+            - pip
+          script:
+            - chmod +x ci.sh
+            - ./ci.sh dev

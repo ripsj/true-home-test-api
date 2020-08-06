@@ -1,0 +1,5 @@
+pytest==3.3.1
+pylint==1.8.1
+tox==2.9.1
+pytest-django==3.1.2
+docstringtest==0.3.0

@@ -1,0 +1,16 @@
+{% extends "email/base.html" %}
+
+{% block title %} Bienvenido a {{ site }} {% endblock %}
+
+{% block content %}
+    <p>Hola <b>{{ display_name }}</b></p>
+    <p>
+        Ahora ya puede usar su cuenta en la plataforma <b>{{ site }}</b>
+        solo necesitamos que nos ayude con este último paso donde requerimos que confirme su cuenta de correo .
+    <p>
+        Para confirmar su cuenta de correo haga click en el siguiente link
+        <a href="{{ link }}">{{ link }}</a>
+    </p>
+
+    <p>Equipo {{ site }}!</p>
+{% endblock %}

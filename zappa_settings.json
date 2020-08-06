@@ -1,0 +1,26 @@
+{
+    "dev": {
+      "aws_region": "us-east-1",
+      "django_settings": "project.settings",
+      "project_name": "zappa-django-boilerplate",
+      "runtime": "python3.6",
+      "s3_bucket": "zappa-django-boilerplate-putwja4zp",
+      "remote_env": "s3://zappa-django-boilerplate-putwja4zp/super-secret-config.json",
+    },
+    "stage": {
+      "aws_region": "us-east-1",
+      "django_settings": "project.settings",
+      "project_name": "zappa-django-boilerplate",
+      "runtime": "python3.6",
+      "s3_bucket": "zappa-django-boilerplate-putwja4zp",
+      "remote_env": "s3://zappa-django-boilerplate-putwja4zp/super-secret-config.json",
+    },
+    "prod": {
+      "aws_region": "us-east-1",
+      "django_settings": "project.settings",
+      "project_name": "zappa-django-boilerplate",
+      "runtime": "python3.6",
+      "s3_bucket": "zappa-django-boilerplate-putwja4zp",
+      "remote_env": "s3://zappa-django-boilerplate-putwja4zp/super-secret-config.json",
+    }
+}

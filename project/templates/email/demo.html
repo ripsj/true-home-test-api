@@ -1,0 +1,12 @@
+{% extends "email/base.html" %}
+
+{% block title %} Titulo del mail {% endblock %}
+
+{% block content %}
+    Welcome {{ full_name }}!
+
+    Your username is {{ username }} and your password is {{ password }}.
+
+    - Management
+
+{% endblock %}

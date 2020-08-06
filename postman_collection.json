@@ -1,0 +1,487 @@
+{
+	"info": {
+		"_postman_id": "c2b6d577-f6fd-46c3-9d42-7888de338881",
+		"name": "Boilerplate Django",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "31c09929-b7e3-484f-978c-0119bc762540",
+								"exec": [
+									"pm.test(\"SetTokenGlobal\", function () {",
+									"   pm.environment.set(\"access_token\", pm.response.json().access);",
+									"   pm.environment.set(\"refresh_token\", pm.response.json().refresh);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"abner.grajales@dacodes.com.mx\",\n\t\"password\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/auth/token/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"token",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "31c09929-b7e3-484f-978c-0119bc762540",
+								"exec": [
+									"pm.test(\"SetTokenGlobal\", function () {",
+									"  pm.environment.set(\"access_token\", pm.response.json().access);",
+									"  pm.environment.set(\"refresh_token\", pm.response.json().refresh);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"first_name\": \"Pau\",\n\t\"last_name\": \"Sanchez\",\n\t\"email\": \"pausanchez@rasconstructora.com\",\n\t\"password\": 123456,\n\t\"password_confirm\": 123456,\n\t\"type\": 1\n}"
+						},
+						"url": {
+							"raw": "{{host}}/auth/register/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "31c09929-b7e3-484f-978c-0119bc762540",
+								"exec": [
+									"pm.test(\"SetTokenGlobal\", function () {",
+									"   pm.environment.set(\"access_token\", pm.response.json().access);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"refresh\": \"{{refresh_token}}\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/auth/token-refresh/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"token-refresh",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remember Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"ignacio-91@yopmail.com\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/auth/recover-password/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"recover-password",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Password",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"code\": \"7284930056\",\n\t\"password\": \"mad7824e\",\n\t\"password_confirm\": \"mad7824e\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/auth/reset-password/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"reset-password",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Example New Object",
+			"item": [
+				{
+					"name": "List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "31c09929-b7e3-484f-978c-0119bc762540",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{host}}/examples/objects/?",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"examples",
+								"objects",
+								""
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "name find",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "31c09929-b7e3-484f-978c-0119bc762540",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{host}}/examples/objects/1/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"examples",
+								"objects",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "31c09929-b7e3-484f-978c-0119bc762540",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Name",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/abnergrajales/Desktop/Screen Shot 2019-06-25 at 9.51.15.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/examples/objects/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"examples",
+								"objects",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "31c09929-b7e3-484f-978c-0119bc762540",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Name edited",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/exaples/1/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"exaples",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "31c09929-b7e3-484f-978c-0119bc762540",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{host}}/exaples/1/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"exaples",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
