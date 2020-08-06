@@ -1,5 +1,7 @@
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import viewsets, permissions
+from django.shortcuts import get_object_or_404
+from rest_framework import viewsets, permissions, status
+from rest_framework.views import Response
 from project.apps.categories.models import Category, Subcategory
 from project.apps.categories.serializers import CategorySerializer, SubcategorySerializer
 
@@ -9,6 +11,17 @@ class CategoryViewSet(viewsets.ModelViewSet):
     filter_backends = (DjangoFilterBackend,)
     filter_fields = ()
     permission_classes = (permissions.AllowAny, )
+
+    # def perform_create(self, serializer):
+    #     item = serializer.save()
+    #     return Response(item.data)
+
+    # Delete logico
+    def destroy(self, request, pk=None):
+        category = get_object_or_404(Category, pk=pk)
+        category.is_active = False
+        category.save()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class SubcategoryViewSet(viewsets.ModelViewSet):
     queryset = Subcategory.objects.all().order_by('id')

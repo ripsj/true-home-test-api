@@ -1,25 +1,7 @@
-from django.conf.urls import url
-from django.urls import path, include
-from rest_framework.urlpatterns import format_suffix_patterns
-from project.apps.categories.views import CategoryViewSet, SubcategoryViewSet
+from .views import CategoryViewSet, SubcategoryViewSet
+from rest_framework.routers import DefaultRouter
 
-category = CategoryViewSet.as_view({
-    'get' : 'list',
-    'post' : 'perform_create',
-    'put': 'perform_update',
-    'patch': 'partial_update',
-    'delete': 'perform_destroy'
-})
-
-subcategory = SubcategoryViewSet.as_view({
-    'get' : 'list',
-    'post' : 'perform_create',
-    'put': 'perform_update',
-    'patch': 'partial_update',
-    'delete': 'perform_destroy'
-})
-
-urlpatterns = format_suffix_patterns([
-    path('category', category, name='categocategoryries'),
-    path('subcategory', subcategory, name='subcategory'),
-])
+router = DefaultRouter()
+router.register(r'category', CategoryViewSet, basename='category')
+router.register(r'subcategory', SubcategoryViewSet, basename='category')
+urlpatterns = router.urls
