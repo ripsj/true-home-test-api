@@ -11,6 +11,7 @@ class CategoryViewSet(viewsets.ModelViewSet):
     filter_backends = (DjangoFilterBackend,)
     filter_fields = ()
     permission_classes = (permissions.AllowAny, )
+    pagination_class = None
 
     # def perform_create(self, serializer):
     #     item = serializer.save()

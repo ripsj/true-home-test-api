@@ -12,7 +12,7 @@ class CategorySerializer(serializers.ModelSerializer):
         ]
 
 class SubcategorySerializer(serializers.ModelSerializer):
-    
+    slug = serializers.CharField(read_only=True)    
     class Meta:
         model = Subcategory
         fields = [
