@@ -17,7 +17,7 @@ class CategoryViewSet(viewsets.ModelViewSet):
     #     item = serializer.save()
     #     return Response(item.data)
 
-    # Delete logico
+    # Soft delete as required
     def destroy(self, request, pk=None):
         category = get_object_or_404(Category, pk=pk)
         category.is_active = False
@@ -30,3 +30,11 @@ class SubcategoryViewSet(viewsets.ModelViewSet):
     filter_backends = (DjangoFilterBackend,)
     filter_fields = ()
     permission_classes = (permissions.AllowAny, )
+    pagination_class = None
+
+    # Soft delete as required
+    def destroy(self, request, pk=None):
+        subcategory = get_object_or_404(Subategory, pk=pk)
+        subcategory.is_active = False
+        subcategory.save()
+        return Response(status=status.HTTP_204_NO_CONTENT)
