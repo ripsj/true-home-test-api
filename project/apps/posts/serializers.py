@@ -20,3 +20,7 @@ class PostsSerializer(serializers.ModelSerializer):
             'subcategory', 
             'created_at'   
         ]
+        lookup_field = 'slug'
+        extra_kwargs = {
+            'url': {'lookup_field': 'slug'}
+        }

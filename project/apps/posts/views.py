@@ -6,14 +6,17 @@ from project.apps.posts.models import Posts
 from project.apps.categories.models import Category, Subcategory
 from project.apps.posts.serializers import PostsSerializer
 from project.apps.posts.utils import category_and_subcategory_finder, serializer_decider
+from project.apps.posts.filters import TagFilter
 
 class PostsViewSet(viewsets.ModelViewSet):
     queryset = Posts.objects.all().order_by('id')
     filter_backends = (DjangoFilterBackend,)
     filter_fields = ('category__id', 'subcategory__id', 'is_active', 'created_at')
+    # filter_class = TagFilter
     permission_classes = (permissions.AllowAny, )
     serializer_class = PostsSerializer
     pagination_class = None
+    lookup_field = 'slug'
     
     def perform_create(self, serializer):
         category = get_object_or_404(Category, pk=self.request.data.get('category'))

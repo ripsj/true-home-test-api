@@ -13,10 +13,6 @@ class CategoryViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.AllowAny, )
     pagination_class = None
 
-    # def perform_create(self, serializer):
-    #     item = serializer.save()
-    #     return Response(item.data)
-
     # Soft delete as required
     def destroy(self, request, pk=None):
         category = get_object_or_404(Category, pk=pk)
