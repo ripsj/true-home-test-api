@@ -9,10 +9,11 @@ __DJANGO_APPS = (
     'storages',
 )
 __OWN_APPS = (
-    # core app management commands etc...
     'project.core',
     # apps created
     'project.apps.security',
+    'project.apps.posts',
+    'project.apps.categories',
 )
 __THIRD_PARTY_APPS = (
     'django_s3_storage',
